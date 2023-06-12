@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'linear-gradient-header':
+        'linear-gradient':
           'linear-gradient(92.46deg, #FF8A29 31.2%, #CF5D00 71.97%)',
         'linear-gradient-button':
           'linear-gradient(122.71deg, #F99500 53.34%, #FFCD29 133.06%)',

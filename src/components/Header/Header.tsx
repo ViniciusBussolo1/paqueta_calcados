@@ -12,7 +12,7 @@ import Logo from '../../assets/logo.png'
 export default function Header() {
   return (
     <header className="h-60 w-screen flex flex-col items-center">
-      <div className="h-[3.313rem] w-screen bg-linear-gradient-header flex justify-center items-center pl-3 pr-5">
+      <div className="h-[3.313rem] w-screen bg-linear-gradient flex justify-center items-center pl-3 pr-5">
         <div className="w-[82.75rem] flex justify-between items-center">
           <span className="text-sm text-white font-normal cursor-pointer">
             Loja de Calçados e Moda Online
