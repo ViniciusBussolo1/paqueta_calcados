@@ -12,7 +12,7 @@ import Logo from '../../assets/logo.png'
 export default function Header() {
   return (
     <header className="h-60 w-screen flex flex-col items-center">
-      <div className="h-[3.313rem] w-screen bg-linear-gradient-header flex justify-center items-center px-2">
+      <div className="h-[3.313rem] w-screen bg-linear-gradient-header flex justify-center items-center pl-3 pr-5">
         <div className="w-[82.75rem] flex justify-between items-center">
           <span className="text-sm text-white font-normal cursor-pointer">
             Loja de Calçados e Moda Online
@@ -34,9 +34,9 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <div className="w-screen pt-[0.938rem] pb-[1.125rem] flex flex-col items-center gap-11">
-        <div className="w-[83.625rem] flex justify-between items-center">
-          <Image src={Logo} alt="Logo" />
+      <div className="w-screen flex justify-center flex-wrap gap-11 pl-3 pr-5">
+        <div className="w-[83.625rem] flex justify-between items-center ">
+          <Image src={Logo} alt="Logo" width={297} height={86} />
 
           <nav className="flex gap-10">
             <ItensMenu description="Lista de Desejos" icon={Heart} />

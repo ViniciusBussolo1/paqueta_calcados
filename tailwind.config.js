@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -10,12 +11,17 @@ module.exports = {
       backgroundImage: {
         'linear-gradient-header':
           'linear-gradient(92.46deg, #FF8A29 31.2%, #CF5D00 71.97%)',
+        'linear-gradient-button':
+          'linear-gradient(122.71deg, #F99500 53.34%, #FFCD29 133.06%)',
       },
       colors: {
         white: '#FFFFFF',
         black: {
           400: '#383838',
           800: '#121212',
+        },
+        orange: {
+          600: '#CF5D00',
         },
       },
     },
