@@ -11,7 +11,7 @@ export default function Main() {
           </h2>
         </div>
         <div className="flex flex-col gap-14 items-end">
-          <p className="w-[37.5rem] text-right text-[1.375rem] leading-9 ">
+          <p className="w-[37.5rem] text-right text-black-400 text-[1.375rem] leading-9 ">
             Escolher o seu sapato favorito entre nossa variedade de modelos e
             cores não será uma tarefa fácil, mas o que uma mulher não consegue
             fazer?{' '}
@@ -23,7 +23,7 @@ export default function Main() {
       </div>
       <div className="w-[82.071rem] flex justify-between items-center gap-4">
         <div className="flex flex-col gap-14 items-start">
-          <p className="w-[37.5rem] text-[1.375rem] leading-9 ">
+          <p className="w-[37.5rem] text-[1.375rem] text-black-400 leading-9 ">
             Tenha em seu guarda roupa sapatos de qualidade e confortáveis, para
             o dia a dia, trabalho e até mesmo para praticar esportes!
           </p>
