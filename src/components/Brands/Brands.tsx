@@ -7,7 +7,7 @@ import ViaMarte from '../../assets/brands/viamarte.svg'
 
 export default function Brands() {
   return (
-    <div className="w-full flex justify-center items-center pt-[9.375rem]">
+    <section className="w-full flex justify-center items-center pt-[9.375rem]">
       <div className="w-[82.071rem] flex flex-col gap-20">
         <h2 className="font-semibold text-[2.125rem] text-black-800 leading-[3rem]">
           AS MELHORES MARCAS ESTÃO AQUI!
@@ -20,6 +20,6 @@ export default function Brands() {
           <Image src={Dumond} alt="Image Logo Dumond" />
         </div>
       </div>
-    </div>
+    </section>
   )
 }

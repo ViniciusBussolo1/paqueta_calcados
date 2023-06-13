@@ -3,6 +3,7 @@ import BannerMenu from '@/components/BannerMenu/BannerMenu'
 import Infos from '@/components/Infos/Infos'
 import Main from '@/components/Main/Main'
 import Brands from '@/components/Brands/Brands'
+import Footer from '@/components/Footer/Footer'
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Infos />
       <Main />
       <Brands />
+      <Footer />
     </>
   )
 }
