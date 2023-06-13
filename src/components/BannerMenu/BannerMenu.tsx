@@ -22,7 +22,7 @@ export default function BannerMenu() {
               R$ 79,99
             </span>
           </div>
-          <button className="w-[16.063rem] py-2 bg-linear-gradient-header rounded-sm uppercase font-normal text-lg text-white">
+          <button className="w-[16.063rem] py-2 bg-linear-gradient-button rounded-sm uppercase font-normal text-lg text-white">
             Aproveite
           </button>
         </div>

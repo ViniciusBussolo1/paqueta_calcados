@@ -8,7 +8,7 @@ import Replecement from '../../assets/iconsInfos/replacement.svg'
 
 export default function Infos() {
   return (
-    <div className="w-screen h-[10.188rem] bg-linear-gradient flex justify-center items-center gap-16">
+    <div className="w-full h-[10.188rem] bg-linear-gradient flex justify-center items-center gap-16 px-4">
       <div className="flex gap-5 items-center">
         <Image src={Card} alt="Icon Box" />
         <span className="w-[7.625rem] text-sm text-white font-normal">
