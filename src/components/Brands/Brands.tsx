@@ -13,7 +13,7 @@ export default function Brands() {
           AS MELHORES MARCAS ESTÃO AQUI!
         </h2>
 
-        <div className="flex items-center gap-[9.75rem]">
+        <div className="flex items-center justify-between">
           <Image src={Adidas} alt="Image Logo Adidas" />
           <Image src={ViaMarte} alt="Image Logo ViaMarte" />
           <Image src={Bebece} alt="Image Logo Bebece" />
