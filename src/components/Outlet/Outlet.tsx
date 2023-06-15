@@ -1,12 +1,38 @@
+'use client'
+
+import { useQuery } from '@tanstack/react-query'
+import api from '@/services/api'
 import Image from 'next/image'
+
 import ButtonNumbers from './ButtonNumbers'
 
 import Logo from '../../assets/logo.png'
 
+interface dataShoesProps {
+  id: string
+  name: string
+  price: {
+    value: number
+    discount: number
+  }
+  soldout: boolean
+  image: string
+  description: string
+}
+
 export default function Outlet() {
+  const getShoes = async () => {
+    return await api.get('/shoes')
+  }
+
+  const { data } = useQuery({
+    queryKey: ['shoes'],
+    queryFn: getShoes,
+  })
+
   return (
-    <section className="w-full pt-52 flex flex-col items-center">
-      <div className="w-[82.071rem]">
+    <section className="w-full pt-52 flex flex-col items-center justify-center px-4">
+      <div className="w-[82.071rem] ">
         <div className="w-full flex justify-between items-center">
           <div className="flex flex-col items-end">
             <Image src={Logo} alt="Logo Paquetá" />
@@ -22,7 +48,7 @@ export default function Outlet() {
           </div>
         </div>
       </div>
-      <div className="w-[82.071rem] mt-[4.625rem] flex justify-between">
+      <div className="w-[82.071rem] mt-[4.625rem] flex justify-between ">
         <ButtonNumbers number={33} />
         <ButtonNumbers number={34} />
         <ButtonNumbers number={35} />
@@ -37,16 +63,21 @@ export default function Outlet() {
         <ButtonNumbers number={44} />
       </div>
       <div className="w-[82.071rem] mt-[10.5rem]">
-        <div className="w-full flex justify-between ">
+        <div className="w-full flex justify-between items-center">
           <h2 className="font-semibold text-[2.125rem] leading-[3rem] text-black-800 uppercase">
             Destaques
           </h2>
-          <div>
-            <span className="text-lg leading-[1.563rem] text-black-400 uppercase cursor-pointer hover:text-black-800">
+          <div className="relative group h-7">
+            <span className="text-lg leading-[1.563rem] text-black-400 uppercase cursor-pointer hover:text-black-800 ">
               Conferir Tudo
             </span>
-            <div className="w-[8.6rem] h-[0.063rem] bg-orange-600"></div>
+            <div className="absolute left-0 w-0 h-[0.063rem] bg-orange-600 transition-all group-hover:w-full"></div>
           </div>
+        </div>
+        <div>
+          {data?.data.map((shoe: dataShoesProps) => {
+            return <h1 key={shoe.id}>{shoe.name}</h1>
+          })}
         </div>
       </div>
     </section>
