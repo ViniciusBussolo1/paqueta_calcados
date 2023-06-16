@@ -1,12 +1,16 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
+import { useKeenSlider } from 'keen-slider/react'
 import api from '@/services/api'
 import Image from 'next/image'
 
 import ButtonNumbers from './ButtonNumbers'
 
 import Logo from '../../assets/logo.png'
+
+import 'keen-slider/keen-slider.min.css'
+import { useState } from 'react'
 
 interface dataShoesProps {
   id: string
@@ -21,6 +25,23 @@ interface dataShoesProps {
 }
 
 export default function Outlet() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [loaded, setLoaded] = useState(false)
+
+  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
+    initial: 0,
+    slides: {
+      perView: 4,
+      spacing: 15,
+    },
+    slideChanged(slider) {
+      setCurrentSlide(slider.track.details.rel)
+    },
+    created() {
+      setLoaded(true)
+    },
+  })
+
   const getShoes = async () => {
     return await api.get('/shoes')
   }
@@ -74,12 +95,48 @@ export default function Outlet() {
             <div className="absolute left-0 w-0 h-[0.063rem] bg-orange-600 transition-all group-hover:w-full"></div>
           </div>
         </div>
-        <div>
-          {data?.data.map((shoe: dataShoesProps) => {
-            return <h1 key={shoe.id}>{shoe.name}</h1>
-          })}
+        <div className="navigation-wrapper">
+          <div ref={sliderRef} className="keen-slider h-96 ">
+            <div className="keen-slider__slide number-slide1 bg-red-500">1</div>
+            <div className="keen-slider__slide number-slide2 bg-blue-500">
+              2
+            </div>
+            <div className="keen-slider__slide number-slide3 bg-green-500">
+              3
+            </div>
+            <div className="keen-slider__slide number-slide4 bg-yellow-500">
+              4
+            </div>
+          </div>
+          {loaded && instanceRef.current && (
+            <div className="flex justify-center gap-2 py-[0.625rem]">
+              {[
+                ...Array(
+                  instanceRef.current.track.details.slides.length,
+                ).keys(),
+              ].map((idx) => {
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      instanceRef.current?.moveToIdx(idx)
+                    }}
+                    className={`dot ${
+                      currentSlide === idx ? 'active' : ''
+                    } border-none w-3 h-3 bg-[#c5c5c5] rounded-[50%] px-[0.313rem] py-[0.313rem] cursor-pointer focus:outline-none`}
+                  ></button>
+                )
+              })}
+            </div>
+          )}
         </div>
       </div>
     </section>
   )
 }
+
+// {
+// data?.data.map((shoe: dataShoesProps) => {
+//   return <h1 key={shoe.id}>{shoe.name}</h1>
+// })
+// }
