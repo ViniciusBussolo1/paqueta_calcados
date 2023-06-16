@@ -18,7 +18,14 @@ body {
     background-image: linear-gradient(to left, #F57002 3.3%, rgba(245, 112, 2, 0) 56.06%), url(../assets/calcados-masculinos.png);   
 }
 
-.dot.active {
-    background: #F57002;
+.swiper-pagination-bullet {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    color: #000;
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.2);
 }
-
+ 
