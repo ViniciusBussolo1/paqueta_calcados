@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import LogoFooter from '../../assets/logo-footer.svg'
+import LogoFooter from '../../assets/Footer/logo-footer.svg'
 
 export default function Footer() {
   return (

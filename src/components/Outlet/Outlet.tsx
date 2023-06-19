@@ -3,7 +3,7 @@
 import { useQuery } from '@tanstack/react-query'
 
 import Image from 'next/image'
-import HeartOrange from '../../assets/icons/heart-orange.svg'
+import HeartOrange from '../../assets/Outlet/heart-orange.svg'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination } from 'swiper'

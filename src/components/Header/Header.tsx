@@ -2,11 +2,11 @@ import Image from 'next/image'
 
 import ItensMenu from './ItensMenu'
 
-import HeadPhone from '../../assets/icons/headphone.svg'
-import Location from '../../assets/icons/location.svg'
-import People from '../../assets/icons/people.svg'
-import Heart from '../../assets/icons/heart.svg'
-import Bag from '../../assets/icons/bag.svg'
+import HeadPhone from '../../assets/Header/headphone.svg'
+import Location from '../../assets/Header/location.svg'
+import People from '../../assets/Header/people.svg'
+import Heart from '../../assets/Header/heart.svg'
+import Bag from '../../assets/Header/bag.svg'
 import Logo from '../../assets/logo.png'
 
 export default function Header() {

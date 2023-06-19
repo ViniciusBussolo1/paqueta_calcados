@@ -5,6 +5,7 @@ import Main from '@/components/Main/Main'
 import Brands from '@/components/Brands/Brands'
 import Footer from '@/components/Footer/Footer'
 import Outlet from '@/components/Outlet/Outlet'
+import Offers from '@/components/Offers/offers'
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <Main />
       <Outlet />
       <Brands />
+      <Offers />
       <Footer />
     </>
   )
