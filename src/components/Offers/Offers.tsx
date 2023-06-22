@@ -33,7 +33,7 @@ export default function Offers() {
                   <input
                     type="email"
                     placeholder="maria@seuemail.com"
-                    className="bg-transparent text-lg leading-[1.563rem] placeholder:text-white placeholder:opacity-60"
+                    className="bg-transparent text-lg leading-[1.563rem] placeholder:text-white placeholder:opacity-60 outline-none text-white"
                   />
                 </div>
                 <div className="w-full h-[0.063rem] bg-white"></div>
@@ -44,7 +44,7 @@ export default function Offers() {
                   <input
                     type="text"
                     placeholder="Maria da Silva"
-                    className="bg-transparent text-lg leading-[1.563rem] placeholder:text-white placeholder:opacity-60 "
+                    className="bg-transparent text-lg leading-[1.563rem] placeholder:text-white placeholder:opacity-60 outline-none text-white"
                   />
                 </div>
                 <div className="w-full h-[0.063rem] bg-white"></div>

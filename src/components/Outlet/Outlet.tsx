@@ -131,13 +131,13 @@ export default function Outlet() {
                         </div>
                       </div>
 
-                      <button className="w-full bg-orange-600 font-semibold text-base uppercase text-white rounded-sm py-3 ">
+                      <button className="w-full bg-orange-600 font-semibold text-base uppercase text-white rounded-sm py-3 cursor-default">
                         me avise quando chegar
                       </button>
                     </div>
                   </>
                 ) : (
-                  <div className="w-[19.188rem] h-[28rem] px-6 pt-9 pb-6 flex flex-col items-center justify-end relative">
+                  <div className="w-[19.188rem] h-[28rem] px-6 pt-9 pb-6 flex flex-col items-center justify-end relative cursor-pointer">
                     <Image
                       src={HeartOrange}
                       alt="Icon Heart"
