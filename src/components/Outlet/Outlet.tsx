@@ -2,8 +2,8 @@
 
 import { useQuery } from '@tanstack/react-query'
 
+import Link from 'next/link'
 import Image from 'next/image'
-import HeartOrange from '../../assets/Outlet/heart-orange.svg'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination } from 'swiper'
@@ -11,7 +11,9 @@ import { Pagination } from 'swiper'
 import api from '@/services/api'
 
 import ButtonNumbers from './ButtonNumbers'
+
 import Logo from '../../assets/logo.png'
+import HeartOrange from '../../assets/Outlet/heart-orange.svg'
 
 import 'swiper/css/pagination'
 import 'swiper/css'
@@ -137,7 +139,10 @@ export default function Outlet() {
                     </div>
                   </>
                 ) : (
-                  <div className="w-[19.188rem] h-[28rem] px-6 pt-9 pb-6 flex flex-col items-center justify-end relative cursor-pointer">
+                  <Link
+                    href={`/${shoe.id}`}
+                    className="w-[19.188rem] h-[28rem] px-6 pt-9 pb-6 flex flex-col items-center justify-end relative cursor-pointer"
+                  >
                     <Image
                       src={HeartOrange}
                       alt="Icon Heart"
@@ -166,10 +171,10 @@ export default function Outlet() {
                       </div>
                     </div>
 
-                    <button className="w-full bg-linear-gradient-button font-bold text-lg uppercase text-white rounded-sm py-2">
+                    <button className="w-full bg-linear-gradient-button font-bold text-lg uppercase text-white rounded-sm py-2 hover:opacity-60">
                       comprar
                     </button>
-                  </div>
+                  </Link>
                 )}
               </SwiperSlide>
             )
