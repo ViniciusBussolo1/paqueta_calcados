@@ -10,6 +10,7 @@ import Youtube from '../../assets/PageShoe/Social/youtube.svg'
 import Pinterest from '../../assets/PageShoe/Social/pinterest.svg'
 
 import Heart from '../../assets/PageShoe/heart.svg'
+import ButtonNumbersShoe from './ButtonNumbersShoe'
 
 interface ShoeProps {
   params: {
@@ -77,24 +78,57 @@ export default function Shoe({ params }: ShoeProps) {
             </div>
           </div>
         </div>
-        <div className="h-[52.25rem] w-[33.625rem] flex flex-col gap-16 bg-red-400">
-          <div>
+        <div className="h-[52.25rem] w-[33.625rem] flex flex-col gap-16 pt-14">
+          <div className="flex flex-col gap-2">
             <Image src={Heart} alt="Icon Heart" />
-            <h2>SCARPIN VIZZANO VERDE SALTO ALTO</h2>
-            <span>Código do produto: 365087-2001152093</span>
+            <h2 className="text-[2.5rem] leading-[3.125rem] font-semibold text-black-800">
+              SCARPIN VIZZANO VERDE SALTO ALTO
+            </h2>
+            <span className="text-lg leading-[1.575rem] text-black-400 opacity-80">
+              Código do produto: 365087-2001152093
+            </span>
           </div>
-          <div>
-            <div>
-              <span>R$199,00</span>
-              <div>
-                <span>21% DE DESCONTO</span>
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center gap-6">
+              <span className="text-[1.375rem] leading-[1.925rem] text-black-400 opacity-80 line-through">
+                R$199,00
+              </span>
+              <div className="w-[10.688rem] h-[1.313rem] bg-green-500 flex justify-center items-center rounded">
+                <span className="text-sm leading-[1.4rem] font-semibold text-white">
+                  21% DE DESCONTO
+                </span>
               </div>
             </div>
-            <div>
-              <span>R$ 149,99</span>
-              <span>ou 9x R$ 16,66</span>
+            <div className="flex flex-col gap-1">
+              <span className="text-[2.5rem] leading-[3.5rem] font-bold text-black-800">
+                R$ 149,99
+              </span>
+              <span className="text-xl font-medium text-black-400 opacity-60">
+                ou 9x R$ 16,66
+              </span>
             </div>
           </div>
+          <div className="flex flex-col gap-5">
+            <span className="text-lg leading-[1.575rem] text-black-400 opacity-80">
+              Escolha a numeração:
+            </span>
+            <div className="flex gap-[2.169rem]">
+              <ButtonNumbersShoe number={34} soldOut={true} />
+              <ButtonNumbersShoe number={35} />
+              <ButtonNumbersShoe number={36} soldOut={true} />
+              <ButtonNumbersShoe number={37} />
+              <ButtonNumbersShoe number={38} />
+              <ButtonNumbersShoe number={39} />
+              <ButtonNumbersShoe number={40} />
+            </div>
+            <span className="text-base leading-[1.4rem] font-bold text-black-400 opacity-60 mt-3">
+              Guia de tamanhos
+            </span>
+          </div>
+
+          <button className="text-[2.1rem] leading-[110%] uppercase text-white bg-linear-gradient-button py-3 px-4 rounded">
+            Comprar
+          </button>
         </div>
       </div>
     </div>

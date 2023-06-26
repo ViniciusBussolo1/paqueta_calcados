@@ -29,6 +29,9 @@ module.exports = {
           500: '#F57002',
           600: '#CF5D00',
         },
+        green: {
+          500: '#65C239',
+        },
       },
       dropShadow: {
         sm: '0px 4px 4px rgba(0, 0, 0, 0.25)',
