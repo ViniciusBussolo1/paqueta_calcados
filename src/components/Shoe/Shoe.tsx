@@ -1,3 +1,13 @@
+'use client'
+
+import { useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
+
+import Link from 'next/link'
+
+import { SwiperSlide, Swiper } from 'swiper/react'
+import { Pagination } from 'swiper'
+
 import { ChevronRight } from 'lucide-react'
 
 import Teste from '../../assets/teste.svg'
@@ -9,17 +19,43 @@ import Twitter from '../../assets/PageShoe/Social/twitter.svg'
 import Youtube from '../../assets/PageShoe/Social/youtube.svg'
 import Pinterest from '../../assets/PageShoe/Social/pinterest.svg'
 
+import HeartOrange from '../../assets/Outlet/heart-orange.svg'
+
 import Heart from '../../assets/PageShoe/heart.svg'
 import ButtonNumbersShoe from './ButtonNumbersShoe'
 
+import api from '@/services/api'
 interface ShoeProps {
   params: {
     id: string
   }
 }
+interface dataShoesProps {
+  id: string
+  name: string
+  price: {
+    value: number
+    discount: number
+  }
+  soldout: boolean
+  image: string
+  description: string
+}
+
 export default function Shoe({ params }: ShoeProps) {
+  const [divSelected, setDivSelected] = useState<number | null>(null)
+
+  const getShoes = async () => {
+    return await api.get('/shoes')
+  }
+
+  const { data } = useQuery({
+    queryKey: ['shoes'],
+    queryFn: getShoes,
+  })
+
   return (
-    <div className="w-screen h-screen flex justify-center pt-[4.375rem]">
+    <div className="w-screen h-screen flex flex-col items-center pt-[4.375rem]">
       <div className="flex gap-5">
         <div className="h-[52.25rem] w-[52.25rem] flex flex-col gap-16">
           <div className="flex items-center gap-2">
@@ -113,15 +149,43 @@ export default function Shoe({ params }: ShoeProps) {
               Escolha a numeração:
             </span>
             <div className="flex gap-[2.169rem]">
-              <ButtonNumbersShoe number={34} soldOut={true} />
-              <ButtonNumbersShoe number={35} />
-              <ButtonNumbersShoe number={36} soldOut={true} />
-              <ButtonNumbersShoe number={37} />
-              <ButtonNumbersShoe number={38} />
-              <ButtonNumbersShoe number={39} />
-              <ButtonNumbersShoe number={40} />
+              <ButtonNumbersShoe
+                number={34}
+                soldOut={true}
+                setDivSelected={setDivSelected}
+              />
+              <ButtonNumbersShoe
+                number={35}
+                divSelected={divSelected}
+                setDivSelected={setDivSelected}
+              />
+              <ButtonNumbersShoe
+                number={36}
+                soldOut={true}
+                setDivSelected={setDivSelected}
+              />
+              <ButtonNumbersShoe
+                number={37}
+                divSelected={divSelected}
+                setDivSelected={setDivSelected}
+              />
+              <ButtonNumbersShoe
+                number={38}
+                divSelected={divSelected}
+                setDivSelected={setDivSelected}
+              />
+              <ButtonNumbersShoe
+                number={39}
+                divSelected={divSelected}
+                setDivSelected={setDivSelected}
+              />
+              <ButtonNumbersShoe
+                number={40}
+                divSelected={divSelected}
+                setDivSelected={setDivSelected}
+              />
             </div>
-            <span className="text-base leading-[1.4rem] font-bold text-black-400 opacity-60 mt-3">
+            <span className="text-base leading-[1.4rem] font-bold text-black-400 opacity-60 mt-3 cursor-pointer">
               Guia de tamanhos
             </span>
           </div>
@@ -130,6 +194,78 @@ export default function Shoe({ params }: ShoeProps) {
             Comprar
           </button>
         </div>
+      </div>
+      <div className="w-[89.063rem] flex flex-col gap-4">
+        <h1 className="text-[2.5rem] leading-[3.5rem] font-semibold text-black-800 uppercase">
+          Descrição do Produto
+        </h1>
+        <p className="text-[1.375rem] leading-10 font-light text-black-400">
+          O sapato SCARPIN VIZZANO VERDE SALTO ALTO é um calçado elegante e
+          sofisticado que combina com diversos looks, desde os mais formais até
+          os mais descontraídos. Ele apresenta um salto alto que proporciona
+          mais elegância e postura, além de ser confortável para usar durante
+          todo o dia. Seu design em verde acrescenta um toque de cor e
+          modernidade ao visual, e seu acabamento em verniz confere um brilho
+          discreto e charmoso. O SCARPIN VIZZANO VERDE SALTO ALTO é um item
+          indispensável para quem busca um calçado versátil e estiloso.
+        </p>
+      </div>
+      <div className="w-[89.063rem] flex flex-col gap-8 mt-[13.188rem]">
+        <h1 className="text-[2.125rem] leading-[2.975rem] font-bold text-black-800">
+          TALVEZ POSSA LHE INTERESSAR
+        </h1>
+        <Swiper
+          slidesPerView={4}
+          spaceBetween={30}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Pagination]}
+          className="w-full h-[30rem]"
+        >
+          {data?.data.map((shoe: dataShoesProps) => {
+            return (
+              <SwiperSlide key={shoe.id}>
+                <Link
+                  href={`/${shoe.id}`}
+                  className="w-[19.188rem] h-[28rem] px-6 pt-9 pb-6 flex flex-col items-center justify-end relative cursor-pointer"
+                >
+                  <Image
+                    src={HeartOrange}
+                    alt="Icon Heart"
+                    className="absolute top-[11%] right-[10%] cursor-pointer"
+                  />
+                  <div>
+                    <Image
+                      src={shoe.image}
+                      alt={shoe.name}
+                      width={210}
+                      height={149}
+                    />
+                  </div>
+                  <div className="w-full flex flex-col gap-3 mb-3">
+                    <span className="font-medium text-base text-black-800">
+                      {shoe.name}
+                    </span>
+                    <div className="flex flex-col gap-1">
+                      <span className="font-bold text-xl text-black-800">
+                        R$ {shoe.price.value}
+                      </span>
+                      <span className="text-xs text-black-400 opacity-60 uppercase">
+                        ou 10x de{' '}
+                        {parseFloat((shoe.price.value / 9).toFixed(2))}
+                      </span>
+                    </div>
+                  </div>
+
+                  <button className="w-full bg-linear-gradient-button font-bold text-lg uppercase text-white rounded-sm py-2 hover:opacity-60">
+                    comprar
+                  </button>
+                </Link>
+              </SwiperSlide>
+            )
+          })}
+        </Swiper>
       </div>
     </div>
   )
