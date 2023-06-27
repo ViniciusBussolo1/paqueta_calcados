@@ -8,6 +8,7 @@ import People from '../../assets/Header/people.svg'
 import Heart from '../../assets/Header/heart.svg'
 import Bag from '../../assets/Header/bag.svg'
 import Logo from '../../assets/logo.png'
+import Link from 'next/link'
 
 export default function Header() {
   return (
@@ -39,7 +40,9 @@ export default function Header() {
           <Image src={Logo} alt="Logo" width={297} height={86} />
 
           <nav className="flex gap-10">
-            <ItensMenu description="Lista de Desejos" icon={Heart} />
+            <Link href={'/ShoesFavorites'}>
+              <ItensMenu description="Lista de Desejos" icon={Heart} />
+            </Link>
             <ItensMenu description="Sacola" icon={Bag} />
             <ItensMenu description="Entrar" icon={People} />
           </nav>

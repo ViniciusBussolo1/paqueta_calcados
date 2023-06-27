@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useQueries } from '@tanstack/react-query'
 
 import Link from 'next/link'
@@ -21,9 +21,11 @@ import Pinterest from '../../assets/PageShoe/Social/pinterest.svg'
 import HeartOrange from '../../assets/Outlet/heart-orange.svg'
 
 import Heart from '../../assets/PageShoe/heart.svg'
+import HeartFull from '../../assets/PageShoe/heartFull.svg'
 import ButtonNumbersShoe from './ButtonNumbersShoe'
 
 import api from '@/services/api'
+import { ShoeContext } from '@/context/shoeContext'
 
 interface ShoeProps {
   params: {
@@ -44,6 +46,8 @@ interface dataShoesProps {
 
 export default function Shoe({ params }: ShoeProps) {
   const [divSelected, setDivSelected] = useState<number | null>(null)
+
+  const { handleIdShoe } = useContext(ShoeContext)
 
   const getShoes = async () => {
     return await api.get('/shoes')
@@ -73,7 +77,10 @@ export default function Shoe({ params }: ShoeProps) {
         {shoeQuery.data?.data.map((shoe: dataShoesProps) => {
           return (
             <>
-              <div className="h-[52.25rem] w-[52.25rem] flex flex-col gap-6">
+              <div
+                className="h-[52.25rem] w-[52.25rem] flex flex-col gap-6"
+                key={shoe.id}
+              >
                 <div className="flex items-center gap-2">
                   <span className="text-lg leading-[1.575rem] text-black-400 opacity-60">
                     Paquetá
@@ -138,7 +145,11 @@ export default function Shoe({ params }: ShoeProps) {
               <div className="h-[52.25rem] w-[33.625rem] flex flex-col gap-16 pt-14">
                 <div className="flex flex-col gap-2">
                   <div className="flex flex-col gap-3">
-                    <Image src={Heart} alt="Icon Heart" />
+                    <Image
+                      src={Heart}
+                      alt="Icon Heart"
+                      className="cursor-pointer"
+                    />
                     <h2 className="text-[2.5rem] leading-[3.125rem] font-semibold text-black-800">
                       {shoe.name}
                     </h2>
@@ -229,7 +240,10 @@ export default function Shoe({ params }: ShoeProps) {
                   </span>
                 </div>
 
-                <button className="text-[2.1rem] leading-[110%] uppercase text-white bg-linear-gradient-button py-3 px-4 rounded">
+                <button
+                  className="text-[2.1rem] leading-[110%] uppercase text-white bg-linear-gradient-button py-3 px-4 rounded"
+                  onClick={() => handleIdShoe(shoe.id)}
+                >
                   Comprar
                 </button>
               </div>
@@ -237,25 +251,30 @@ export default function Shoe({ params }: ShoeProps) {
           )
         })}
       </div>
-      <div className="w-[89.063rem] flex flex-col gap-4">
-        <h1 className="text-[2.5rem] leading-[3.5rem] font-semibold text-black-800 uppercase">
-          Descrição do Produto
-        </h1>
-        <p className="text-[1.375rem] leading-10 font-light text-black-400">
-          O sapato SCARPIN VIZZANO VERDE SALTO ALTO é um calçado elegante e
-          sofisticado que combina com diversos looks, desde os mais formais até
-          os mais descontraídos. Ele apresenta um salto alto que proporciona
-          mais elegância e postura, além de ser confortável para usar durante
-          todo o dia. Seu design em verde acrescenta um toque de cor e
-          modernidade ao visual, e seu acabamento em verniz confere um brilho
-          discreto e charmoso. O SCARPIN VIZZANO VERDE SALTO ALTO é um item
-          indispensável para quem busca um calçado versátil e estiloso.
-        </p>
+      <div className="w-[89.063rem] flex flex-col gap-4 mt-11">
+        {shoeQuery.data?.data.map((shoe: dataShoesProps) => {
+          return (
+            <>
+              <h1
+                className="text-[2.5rem] leading-[3.5rem] font-semibold text-black-800 uppercase"
+                key={shoe.id}
+              >
+                Descrição do Produto
+              </h1>
+              <p className="text-[1.375rem] leading-10 font-light text-black-400">
+                {shoe.description}
+              </p>
+            </>
+          )
+        })}
       </div>
-      <div className="w-[89.063rem] flex flex-col gap-8 mt-[13.188rem]">
+      <div className="w-[89.063rem] mt-[13.188rem] ">
         <h1 className="text-[2.125rem] leading-[2.975rem] font-bold text-black-800">
           TALVEZ POSSA LHE INTERESSAR
         </h1>
+      </div>
+
+      <div className="w-[89.063rem] mt-8">
         <Swiper
           slidesPerView={4}
           spaceBetween={30}
@@ -263,7 +282,7 @@ export default function Shoe({ params }: ShoeProps) {
             clickable: true,
           }}
           modules={[Pagination]}
-          className="w-full h-[30rem]"
+          className="h-[30rem]"
         >
           {shoesQuery?.data?.data.map((shoes: dataShoesProps) => {
             return (
@@ -308,7 +327,7 @@ export default function Shoe({ params }: ShoeProps) {
                     </Link>
                   </SwiperSlide>
                 ) : (
-                  <span></span>
+                  <span key={shoes.id}></span>
                 )}
               </>
             )
