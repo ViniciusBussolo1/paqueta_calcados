@@ -17,6 +17,7 @@ module.exports = {
           'linear-gradient(175.96deg, #F57002 3.3%, rgba(245, 112, 2, 0) 56.06%)',
         'linear-gradient-offers':
           'linear-gradient(90deg, rgba(207,93,0,1) 31%, rgba(255,138,41,1) 71%, rgba(255,138,41,1) 100%)',
+        'line-favorites': ' rgba(207, 93, 0, 0.5)',
       },
       colors: {
         white: '#FFFFFF',
