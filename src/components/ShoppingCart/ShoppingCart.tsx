@@ -7,10 +7,10 @@ import { useContext } from 'react'
 
 import Image from 'next/image'
 
-import Trash from '../../assets/Favorites/trash.svg'
+import Trash from '../../assets/ShoppingCart/trash.svg'
 
-export default function Favorites() {
-  const { shoesFavorites } = useContext(ShoeContext)
+export default function ShoppingCart() {
+  const { shoesShoppingCart } = useContext(ShoeContext)
 
   return (
     <div className="w-screen h-screen flex justify-center pt-[4.25rem]">
@@ -42,7 +42,7 @@ export default function Favorites() {
             <div className="h-[0.063rem] w-full bg-orange-500"></div>
           </div>
           <div className="w-[71.813rem] flex flex-col gap-16">
-            {shoesFavorites.map((data, index) => {
+            {shoesShoppingCart.map((data, index) => {
               return (
                 <>
                   <div key={index} className="w-full flex justify-between">

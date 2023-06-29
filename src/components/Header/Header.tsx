@@ -1,6 +1,11 @@
+'use client'
+
 import Image from 'next/image'
 
 import ItensMenu from './ItensMenu'
+
+import { useContext } from 'react'
+import { ShoeContext } from '@/context/shoeContext'
 
 import HeadPhone from '../../assets/Header/headphone.svg'
 import Location from '../../assets/Header/location.svg'
@@ -11,6 +16,8 @@ import Logo from '../../assets/logo.png'
 import Link from 'next/link'
 
 export default function Header() {
+  const { shoesShoppingCart } = useContext(ShoeContext)
+
   return (
     <header className="h-60 w-screen flex flex-col items-center">
       <div className="h-[3.313rem] w-screen bg-linear-gradient flex justify-center items-center pl-3 pr-5">
@@ -39,11 +46,22 @@ export default function Header() {
         <div className="w-[83.625rem] flex justify-between items-center ">
           <Image src={Logo} alt="Logo" width={297} height={86} />
 
-          <nav className="flex gap-10">
-            <Link href={'/ShoesFavorites'}>
+          <nav className="flex items-center gap-10 h-14">
+            <div className="relative h-full flex items-center">
               <ItensMenu description="Lista de Desejos" icon={Heart} />
+              <div className="w-5 h-5 rounded-[1.25rem] text-xs leading-[1.05rem] text-white flex justify-center items-center bg-linear-gradient-button absolute top-1 left-[1.375rem]">
+                1
+              </div>
+            </div>
+            <Link
+              href={'/ShoppingCart'}
+              className="relative h-full flex items-center"
+            >
+              <ItensMenu description="Sacola" icon={Bag} />
+              <div className="w-5 h-5 rounded-[1.25rem] text-xs leading-[1.05rem] text-white flex justify-center items-center bg-linear-gradient-button absolute top-1 left-5">
+                {shoesShoppingCart.length}
+              </div>
             </Link>
-            <ItensMenu description="Sacola" icon={Bag} />
             <ItensMenu description="Entrar" icon={People} />
           </nav>
         </div>

@@ -47,7 +47,7 @@ interface dataShoesProps {
 export default function Shoe({ params }: ShoeProps) {
   const [divSelected, setDivSelected] = useState<number | null>(null)
 
-  const { handleIdShoe } = useContext(ShoeContext)
+  const { handleShoesShoppingCart } = useContext(ShoeContext)
 
   const getShoes = async () => {
     return await api.get('/shoes')
@@ -242,7 +242,7 @@ export default function Shoe({ params }: ShoeProps) {
 
                 <button
                   className="text-[2.1rem] leading-[110%] uppercase text-white bg-linear-gradient-button py-3 px-4 rounded"
-                  onClick={() => handleIdShoe(shoe.id)}
+                  onClick={() => handleShoesShoppingCart(shoe.id)}
                 >
                   Comprar
                 </button>

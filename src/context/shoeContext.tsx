@@ -16,8 +16,8 @@ interface dataShoesProps {
 }
 
 interface ShoeContextDataProps {
-  handleIdShoe: (id: string) => void
-  shoesFavorites: Array<Array<dataShoesProps>>
+  handleShoesShoppingCart: (id: string) => void
+  shoesShoppingCart: Array<Array<dataShoesProps>>
 }
 
 interface ShoeContextProvidersProps {
@@ -27,18 +27,20 @@ interface ShoeContextProvidersProps {
 export const ShoeContext = createContext({} as ShoeContextDataProps)
 
 export function ShoeContextProvider({ children }: ShoeContextProvidersProps) {
-  const [shoesFavorites, setShoesFavorites] = useState<
+  const [shoesShoppingCart, setShoesShoppingCart] = useState<
     Array<Array<dataShoesProps>>
   >([])
 
-  const handleIdShoe = async (id: string) => {
+  const handleShoesShoppingCart = async (id: string) => {
     const data = await api.get(`/shoe/${id}`)
     const resp = data.data
-    setShoesFavorites([...shoesFavorites, resp])
+    setShoesShoppingCart([...shoesShoppingCart, resp])
   }
 
   return (
-    <ShoeContext.Provider value={{ handleIdShoe, shoesFavorites }}>
+    <ShoeContext.Provider
+      value={{ shoesShoppingCart, handleShoesShoppingCart }}
+    >
       {children}
     </ShoeContext.Provider>
   )
