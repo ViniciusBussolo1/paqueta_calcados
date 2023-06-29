@@ -16,7 +16,7 @@ import Logo from '../../assets/logo.png'
 import Link from 'next/link'
 
 export default function Header() {
-  const { shoesShoppingCart } = useContext(ShoeContext)
+  const { shoesShoppingCart, shoesFavorites } = useContext(ShoeContext)
 
   return (
     <header className="h-60 w-screen flex flex-col items-center">
@@ -47,12 +47,15 @@ export default function Header() {
           <Image src={Logo} alt="Logo" width={297} height={86} />
 
           <nav className="flex items-center gap-10 h-14">
-            <div className="relative h-full flex items-center">
+            <Link
+              href={'/ShoesFavorites'}
+              className="relative h-full flex items-center"
+            >
               <ItensMenu description="Lista de Desejos" icon={Heart} />
               <div className="w-5 h-5 rounded-[1.25rem] text-xs leading-[1.05rem] text-white flex justify-center items-center bg-linear-gradient-button absolute top-1 left-[1.375rem]">
-                1
+                {shoesFavorites.length}
               </div>
-            </div>
+            </Link>
             <Link
               href={'/ShoppingCart'}
               className="relative h-full flex items-center"

@@ -46,8 +46,16 @@ interface dataShoesProps {
 
 export default function Shoe({ params }: ShoeProps) {
   const [divSelected, setDivSelected] = useState<number | null>(null)
+  const [Favorite, setFavorite] = useState(false)
 
-  const { handleShoesShoppingCart } = useContext(ShoeContext)
+  const { handleShoesShoppingCart, handleShoesFavorites } =
+    useContext(ShoeContext)
+
+  const handleFavoriteShoe = (id: string) => {
+    setFavorite(true)
+
+    handleShoesFavorites(id)
+  }
 
   const getShoes = async () => {
     return await api.get('/shoes')
@@ -145,11 +153,21 @@ export default function Shoe({ params }: ShoeProps) {
               <div className="h-[52.25rem] w-[33.625rem] flex flex-col gap-16 pt-14">
                 <div className="flex flex-col gap-2">
                   <div className="flex flex-col gap-3">
-                    <Image
-                      src={Heart}
-                      alt="Icon Heart"
-                      className="cursor-pointer"
-                    />
+                    {Favorite === true ? (
+                      <Image
+                        src={HeartFull}
+                        alt="Icon Heart"
+                        className="cursor-pointer"
+                      />
+                    ) : (
+                      <Image
+                        src={Heart}
+                        alt="Icon Heart"
+                        className="cursor-pointer"
+                        onClick={() => handleFavoriteShoe(shoe.id)}
+                      />
+                    )}
+
                     <h2 className="text-[2.5rem] leading-[3.125rem] font-semibold text-black-800">
                       {shoe.name}
                     </h2>
