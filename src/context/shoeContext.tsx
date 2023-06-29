@@ -2,6 +2,7 @@
 
 import api from '@/services/api'
 import { ReactNode, createContext, useState } from 'react'
+import { toast } from 'react-toastify'
 
 interface dataShoesProps {
   id: string
@@ -41,12 +42,32 @@ export function ShoeContextProvider({ children }: ShoeContextProvidersProps) {
     const data = await api.get(`/shoe/${id}`)
     const resp = data.data
     setShoesShoppingCart([...shoesShoppingCart, resp])
+    toast.success('Produto Inserido na Sacola', {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+    })
   }
 
   const handleShoesFavorites = async (id: string) => {
     const data = await api.get(`/shoe/${id}`)
     const resp = data.data
     setShoesFavorites([...shoesFavorites, resp])
+    toast.success('Produto Inserido na Lista de Desejos', {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+    })
   }
 
   return (

@@ -2,6 +2,9 @@
 
 import { useContext, useState } from 'react'
 import { useQueries } from '@tanstack/react-query'
+import { ToastContainer } from 'react-toastify'
+
+import { ShoeContext } from '@/context/shoeContext'
 
 import Link from 'next/link'
 
@@ -25,7 +28,8 @@ import HeartFull from '../../assets/PageShoe/heartFull.svg'
 import ButtonNumbersShoe from './ButtonNumbersShoe'
 
 import api from '@/services/api'
-import { ShoeContext } from '@/context/shoeContext'
+
+import 'react-toastify/dist/ReactToastify.css'
 
 interface ShoeProps {
   params: {
@@ -81,6 +85,7 @@ export default function Shoe({ params }: ShoeProps) {
 
   return (
     <div className="w-screen h-screen flex flex-col items-center pt-[4.375rem]">
+      <ToastContainer />
       <div className="flex gap-5">
         {shoeQuery.data?.data.map((shoe: dataShoesProps) => {
           return (
