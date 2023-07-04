@@ -5,18 +5,18 @@ import { Dispatch, SetStateAction } from 'react'
 interface ButtonNumberShoeProps {
   number: number
   soldOut?: boolean
-  divSelected?: number | null
-  setDivSelected: Dispatch<SetStateAction<number | null>>
+  numberSelected?: number
+  setNumberSelected: Dispatch<SetStateAction<number>>
 }
 
 export default function ButtonNumbersShoe({
   number,
   soldOut,
-  divSelected,
-  setDivSelected,
+  numberSelected,
+  setNumberSelected,
 }: ButtonNumberShoeProps) {
   const handleSelectButton = () => {
-    setDivSelected(number)
+    setNumberSelected(number)
   }
 
   return (
@@ -31,7 +31,7 @@ export default function ButtonNumbersShoe({
       {!soldOut && (
         <div
           className={
-            divSelected === number
+            numberSelected === number
               ? 'relative flex justify-center items-center w-[2.938rem] h-[2.938rem] rounded-[0.188rem] font-medium text-[1.375rem] leading-[1.875rem] text-orange-400 opacity-60 border border-orange-400 cursor-pointer'
               : 'relative flex justify-center items-center w-[2.938rem] h-[2.938rem] rounded-[0.188rem] font-medium text-[1.375rem] leading-[1.875rem] text-black-400 opacity-60 border border-black-400 cursor-pointer'
           }

@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 interface dataShoesProps {
   id: string
   name: string
+
   price: {
     value: number
     discount: number
@@ -17,8 +18,8 @@ interface dataShoesProps {
 }
 
 interface ShoeContextDataProps {
-  handleShoesShoppingCart: (id: string) => void
-  handleShoesFavorites: (id: string) => void
+  handleShoesShoppingCart: (id: string, number: number) => void
+  handleShoesFavorites: (id: string, number: number) => void
   shoesShoppingCart: Array<Array<dataShoesProps>>
   shoesFavorites: Array<Array<dataShoesProps>>
 }
@@ -38,36 +39,63 @@ export function ShoeContextProvider({ children }: ShoeContextProvidersProps) {
     Array<Array<dataShoesProps>>
   >([])
 
-  const handleShoesShoppingCart = async (id: string) => {
-    const data = await api.get(`/shoe/${id}`)
-    const resp = data.data
-    setShoesShoppingCart([...shoesShoppingCart, resp])
-    toast.success('Produto Inserido na Sacola', {
-      position: 'top-right',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: 'dark',
-    })
+  const handleShoesShoppingCart = async (id: string, number: number) => {
+    if (number === 0) {
+      toast.warn('Escolha uma numeração', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      })
+    } else {
+      const data = await api.get(`/shoe/${id}`)
+      const resp = data.data
+      setShoesShoppingCart([...shoesShoppingCart, resp])
+
+      toast.success('Produto Inserido na Sacola', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      })
+    }
   }
 
-  const handleShoesFavorites = async (id: string) => {
-    const data = await api.get(`/shoe/${id}`)
-    const resp = data.data
-    setShoesFavorites([...shoesFavorites, resp])
-    toast.success('Produto Inserido na Lista de Desejos', {
-      position: 'top-right',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: 'dark',
-    })
+  const handleShoesFavorites = async (id: string, number: number) => {
+    if (number === 0) {
+      toast.warn('Escolha uma numeração', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      })
+    } else {
+      const data = await api.get(`/shoe/${id}`)
+      const resp = data.data
+      setShoesFavorites([...shoesFavorites, resp])
+      toast.success('Produto Inserido na Lista de Desejos', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      })
+    }
   }
 
   return (

@@ -7,13 +7,14 @@ import { ToastContainer } from 'react-toastify'
 import { ShoeContext } from '@/context/shoeContext'
 
 import Link from 'next/link'
+import Image from 'next/image'
 
 import { SwiperSlide, Swiper } from 'swiper/react'
 import { Pagination } from 'swiper'
 
 import { ChevronRight } from 'lucide-react'
 
-import Image from 'next/image'
+import ComponetModal from './ComponetModal'
 
 import Instagram from '../../assets/PageShoe/Social/instagram.svg'
 import Facebook from '../../assets/PageShoe/Social/facebook.svg'
@@ -28,6 +29,7 @@ import HeartFull from '../../assets/PageShoe/heartFull.svg'
 import ButtonNumbersShoe from './ButtonNumbersShoe'
 
 import api from '@/services/api'
+import * as Dialog from '@radix-ui/react-dialog'
 
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -39,6 +41,7 @@ interface ShoeProps {
 interface dataShoesProps {
   id: string
   name: string
+  number: number
   price: {
     value: number
     discount: number
@@ -49,7 +52,7 @@ interface dataShoesProps {
 }
 
 export default function Shoe({ params }: ShoeProps) {
-  const [divSelected, setDivSelected] = useState<number | null>(null)
+  const [numberSelected, setNumberSelected] = useState<number>(0)
   const [Favorite, setFavorite] = useState(false)
 
   const { handleShoesShoppingCart, handleShoesFavorites } =
@@ -58,7 +61,7 @@ export default function Shoe({ params }: ShoeProps) {
   const handleFavoriteShoe = (id: string) => {
     setFavorite(true)
 
-    handleShoesFavorites(id)
+    handleShoesFavorites(id, numberSelected)
   }
 
   const getShoes = async () => {
@@ -225,47 +228,60 @@ export default function Shoe({ params }: ShoeProps) {
                     <ButtonNumbersShoe
                       number={34}
                       soldOut={true}
-                      setDivSelected={setDivSelected}
+                      setNumberSelected={setNumberSelected}
                     />
                     <ButtonNumbersShoe
                       number={35}
-                      divSelected={divSelected}
-                      setDivSelected={setDivSelected}
+                      numberSelected={numberSelected}
+                      setNumberSelected={setNumberSelected}
                     />
                     <ButtonNumbersShoe
                       number={36}
                       soldOut={true}
-                      setDivSelected={setDivSelected}
+                      setNumberSelected={setNumberSelected}
                     />
                     <ButtonNumbersShoe
                       number={37}
-                      divSelected={divSelected}
-                      setDivSelected={setDivSelected}
+                      numberSelected={numberSelected}
+                      setNumberSelected={setNumberSelected}
                     />
                     <ButtonNumbersShoe
                       number={38}
-                      divSelected={divSelected}
-                      setDivSelected={setDivSelected}
+                      numberSelected={numberSelected}
+                      setNumberSelected={setNumberSelected}
                     />
                     <ButtonNumbersShoe
                       number={39}
-                      divSelected={divSelected}
-                      setDivSelected={setDivSelected}
+                      numberSelected={numberSelected}
+                      setNumberSelected={setNumberSelected}
                     />
                     <ButtonNumbersShoe
                       number={40}
-                      divSelected={divSelected}
-                      setDivSelected={setDivSelected}
+                      numberSelected={numberSelected}
+                      setNumberSelected={setNumberSelected}
                     />
                   </div>
-                  <span className="text-base leading-[1.4rem] font-bold text-black-400 opacity-60 mt-3 cursor-pointer">
-                    Guia de tamanhos
-                  </span>
+
+                  <Dialog.Root>
+                    <Dialog.Trigger asChild>
+                      <span className="text-base leading-[1.4rem] font-bold text-black-400 opacity-60 mt-3 cursor-pointer">
+                        Guia de tamanhos
+                      </span>
+                    </Dialog.Trigger>
+                    <Dialog.Portal>
+                      <Dialog.Overlay className="bg-black-800 opacity-60 inset-0 fixed" />
+                      <Dialog.Content className="w-[61.875rem] h-[50.875rem] bg-white fixed top-[8%] left-[25%] px-16 py-16 border-none rounded-md">
+                        <ComponetModal />
+                      </Dialog.Content>
+                    </Dialog.Portal>
+                  </Dialog.Root>
                 </div>
 
                 <button
                   className="text-[2.1rem] leading-[110%] uppercase text-white bg-linear-gradient-button py-3 px-4 rounded"
-                  onClick={() => handleShoesShoppingCart(shoe.id)}
+                  onClick={() =>
+                    handleShoesShoppingCart(shoe.id, numberSelected)
+                  }
                 >
                   Comprar
                 </button>

@@ -70,7 +70,7 @@ export default function ShoppingCart() {
                                 <span className="text-xl font-bold">
                                   Numeração:{' '}
                                   <span className="text-black-400 font-normal">
-                                    39
+                                    2
                                   </span>
                                 </span>
                                 <span className="text-xl font-bold">
