@@ -6,12 +6,14 @@ import { queryClient } from '@/services/queryClient'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { ShoeContextProvider } from '@/context/shoeContext'
 import './globals.css'
+import Head from './head'
 
 const poppins = Poppins({ weight: ['400', '500', '700'], subsets: ['latin'] })
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
+      <Head />
       <body className={poppins.className}>
         <QueryClientProvider client={queryClient}>
           <ShoeContextProvider>{children}</ShoeContextProvider>
