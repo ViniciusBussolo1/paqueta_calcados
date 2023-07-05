@@ -7,7 +7,7 @@ import { ShoeContext } from '@/context/shoeContext'
 
 import Image from 'next/image'
 
-import Trash from '.../../../public/ShoppingCart/trash.svg'
+import Trash from '../../../public/ShoppingCart/trash.svg'
 
 export default function FavoritesShoes() {
   const { shoesFavorites } = useContext(ShoeContext)
