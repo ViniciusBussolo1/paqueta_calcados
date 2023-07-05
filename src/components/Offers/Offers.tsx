@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import Arrow from '../../../public/Offers/arrow.svg'
 import Line from '../../../public/Offers/line.svg'
-import Envelop from '../../../public/Offers/Envelop.svg'
+import Envelop from '../../../public/Offers/envelop.svg'
 import User from '../../../public/Offers/user.svg'
 
 export default function Offers() {
