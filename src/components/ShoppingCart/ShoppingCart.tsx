@@ -7,7 +7,7 @@ import { useContext } from 'react'
 
 import Image from 'next/image'
 
-import Trash from '../../assets/ShoppingCart/trash.svg'
+import Trash from '../../../public/ShoppingCart/trash.svg'
 
 export default function ShoppingCart() {
   const { shoesShoppingCart } = useContext(ShoeContext)

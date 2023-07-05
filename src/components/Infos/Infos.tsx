@@ -1,10 +1,10 @@
 import Image from 'next/image'
 
-import Box from '../../assets/Infos/box.svg'
-import Card from '../../assets/Infos/card.svg'
-import Discount from '../../assets/Infos/discount.svg'
-import Location from '../../assets/Infos/location.svg'
-import Replecement from '../../assets/Infos/replacement.svg'
+import Box from '../../../public/Infos/box.svg'
+import Card from '../../../public/Infos/card.svg'
+import Discount from '../../../public/Infos/discount.svg'
+import Location from '../../../public/Infos/location.svg'
+import Replecement from '../../../public/Infos/replacement.svg'
 
 export default function Infos() {
   return (

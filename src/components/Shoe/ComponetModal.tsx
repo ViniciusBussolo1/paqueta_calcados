@@ -1,6 +1,6 @@
 import SizeGuide from './SizeGuide'
 
-import FootSize from '../../assets/Shoe/ComponentModal/FootSize.svg'
+import FootSize from '../../../public/Shoe/ComponentModal/FootSize.svg'
 import Image from 'next/image'
 
 export default function ComponetModal() {

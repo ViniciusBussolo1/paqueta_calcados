@@ -1,9 +1,9 @@
 import Image from 'next/image'
 
-import Adidas from '../../assets/brands/adidas.svg'
-import Bebece from '../../assets/brands/bebece.svg'
-import Dumond from '../../assets/brands/dumond.svg'
-import ViaMarte from '../../assets/brands/viamarte.svg'
+import Adidas from '../../../public/Brands/adidas.svg'
+import Bebece from '../../../public/Brands/bebece.svg'
+import Dumond from '../../../public/Brands/dumond.svg'
+import ViaMarte from '../../../public/Brands/viamarte.svg'
 
 export default function Brands() {
   return (

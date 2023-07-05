@@ -1,9 +1,9 @@
 import Image from 'next/image'
 
-import Arrow from '../../assets/Offers/arrow.svg'
-import Line from '../../assets/Offers/line.svg'
-import Envelop from '../../assets/Offers/Envelop.svg'
-import User from '../../assets/Offers/user.svg'
+import Arrow from '../../../public/Offers/arrow.svg'
+import Line from '../../../public/Offers/line.svg'
+import Envelop from '../../../public/Offers/Envelop.svg'
+import User from '../../../public/Offers/user.svg'
 
 export default function Offers() {
   return (

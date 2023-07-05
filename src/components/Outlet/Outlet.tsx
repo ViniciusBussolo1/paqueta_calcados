@@ -12,8 +12,8 @@ import api from '@/services/api'
 
 import ButtonNumbers from './ButtonNumbers'
 
-import Logo from '../../assets/logo.png'
-import HeartOrange from '../../assets/Outlet/heart-orange.svg'
+import Logo from '../../../public/logo.png'
+import HeartOrange from '../../../public/Outlet/heart-orange.svg'
 
 import 'swiper/css/pagination'
 import 'swiper/css'

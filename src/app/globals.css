@@ -2,20 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body {
     overflow-x: hidden;
 }
 
 #banner_hero {
-    background-image:  url(../assets/banner-hero.png);
+    background-image:  url(../../public/banner-hero.png);
 }
 
 #banner_cacados_femininos {
-    background-image: linear-gradient(to right, #F57002 3.3%, rgba(245, 112, 2, 0) 56.06%), url(../assets/calcados-femininos.png);   
+    background-image: linear-gradient(to right, #F57002 3.3%, rgba(245, 112, 2, 0) 56.06%), url(../../public/calcados-femininos.png);   
 }
 
 #banner_cacados_masculinos {
-    background-image: linear-gradient(to left, #F57002 3.3%, rgba(245, 112, 2, 0) 56.06%), url(../assets/calcados-masculinos.png);   
+    background-image: linear-gradient(to left, #F57002 3.3%, rgba(245, 112, 2, 0) 56.06%), url(../../public/calcados-masculinos.png);   
 }
 
 input[type='radio'] {
@@ -40,7 +41,7 @@ input[type='radio'] {
   }
 
 input[type='radio']:checked + .custom-radio div {
-    background-image:  url(../assets/Offers/check.svg);
+    background-image:  url(../../public/Offers/check.svg);
   }
   
 

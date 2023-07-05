@@ -16,16 +16,16 @@ import { ChevronRight } from 'lucide-react'
 
 import ComponetModal from './ComponetModal'
 
-import Instagram from '../../assets/PageShoe/Social/instagram.svg'
-import Facebook from '../../assets/PageShoe/Social/facebook.svg'
-import Twitter from '../../assets/PageShoe/Social/twitter.svg'
-import Youtube from '../../assets/PageShoe/Social/youtube.svg'
-import Pinterest from '../../assets/PageShoe/Social/pinterest.svg'
+import Instagram from '../../../public/PageShoe/Social/instagram.svg'
+import Facebook from '../../../public/PageShoe/Social/facebook.svg'
+import Twitter from '../../../public/PageShoe/Social/twitter.svg'
+import Youtube from '../../../public/PageShoe/Social/youtube.svg'
+import Pinterest from '../../../public/PageShoe/Social/pinterest.svg'
 
-import HeartOrange from '../../assets/Outlet/heart-orange.svg'
+import HeartOrange from './Outlet/heart-orange.svg'
 
-import Heart from '../../assets/PageShoe/heart.svg'
-import HeartFull from '../../assets/PageShoe/heartFull.svg'
+import Heart from './PageShoe/heart.svg'
+import HeartFull from './PageShoe/heartFull.svg'
 import ButtonNumbersShoe from './ButtonNumbersShoe'
 
 import api from '@/services/api'

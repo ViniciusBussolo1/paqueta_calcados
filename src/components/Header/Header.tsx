@@ -7,13 +7,14 @@ import ItensMenu from './ItensMenu'
 import { useContext } from 'react'
 import { ShoeContext } from '@/context/shoeContext'
 
-import HeadPhone from '../../assets/Header/headphone.svg'
-import Location from '../../assets/Header/location.svg'
-import People from '../../assets/Header/people.svg'
-import Heart from '../../assets/Header/heart.svg'
-import Bag from '../../assets/Header/bag.svg'
-import Logo from '../../assets/logo.png'
 import Link from 'next/link'
+
+import HeadPhone from '../../../public/Header/headphone.svg'
+import Location from '../../../public/Header/location.svg'
+import People from '../../../public/Header/people.svg'
+import Heart from '../../../public/Header/heart.svg'
+import Bag from '../../../public/Header/bag.svg'
+import Logo from '../../../public/logo.png'
 
 export default function Header() {
   const { shoesShoppingCart, shoesFavorites } = useContext(ShoeContext)

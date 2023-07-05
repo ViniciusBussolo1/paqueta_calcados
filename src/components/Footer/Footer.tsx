@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import InfosFooter from './InfosFooter'
 
-import LogoFooter from '../../assets/Footer/logo-footer.svg'
+import LogoFooter from '../../../public/Footer/logo-footer.svg'
 
 export default function Footer() {
   return (
